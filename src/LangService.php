@@ -217,7 +217,7 @@ class LangService extends Command
             $bar = $this->output->createProgressBar(count($dataArr));
             $bar->start();
             foreach ($dataArr as $key => $value) {
-                if ( config('lang-generator.short_keys') && str_contains($key, '.') && !str_contains($key, ' ')) {
+                if ( config('lang-generator.short_keys',true) && str_contains($key, '.') && !str_contains($key, ' ')) {
                     data_fill($res, $key, $value);
                 } else {
                     $res[$key] = '';

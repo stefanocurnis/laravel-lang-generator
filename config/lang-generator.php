@@ -27,7 +27,7 @@ return [
     | Use short translation keys
     |--------------------------------------------------------------------------
     |
-    | If the parser split she keys at each dot. 
+    | If the parser split keys at each dot. 
     | ex: __('short.key') becomes [ 'short' => [ 'key '=> '' ] ]
     |
     */
