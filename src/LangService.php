@@ -8,23 +8,23 @@ use RuntimeException;
 
 class LangService extends Command
 {
-    public bool $isSync   = false;
-    public bool $isNew    = false;
+    public bool $isSync = false;
+    public bool $isNew = false;
     public bool $doAppend = false;
 
     public int $viewsFilesCount = 0;
     public int $viewsKeysCount = 0;
-    public int $appFilesCount    = 0;
-    public int $appKeysCount     = 0;
+    public int $appFilesCount = 0;
+    public int $appKeysCount = 0;
     public int $customFilesCount = 0;
-    public int $customKeysCount  = 0;
+    public int $customKeysCount = 0;
 
     public string|null $path;
     public array $files            = [];
     public array $translationsKeys = [];
 
-    public string $fileType  = 'array';
-    public string $fileName  = 'lang';
+    public string $fileType = 'array';
+    public string $fileName = 'lang';
     public array  $languages = ['en'];
 
     public $output;
@@ -32,8 +32,9 @@ class LangService extends Command
     /**
      * Parse main directories for the availability of translations.
      *
-     * @return void
      * @throws JsonException
+     *
+     * @return void
      */
     public function parseProject(): void
     {
@@ -199,8 +200,9 @@ class LangService extends Command
      *
      * @param array $dataArr All founded language keys in single file
      *
-     * @return void
      * @throws JsonException
+     *
+     * @return void
      */
     public function generateLangsFiles(array $dataArr): void
     {
@@ -241,8 +243,9 @@ class LangService extends Command
      * @param string $path
      * @param array  $dataArr
      *
-     * @return array|mixed
      * @throws JsonException
+     *
+     * @return array|mixed
      */
     private function updateValues(string $path, array $dataArr): mixed
     {
@@ -289,6 +292,7 @@ class LangService extends Command
                 }
             }
         }
+
         return $dataArr;
     }
 
@@ -359,16 +363,17 @@ class LangService extends Command
      * @param       $fileName
      * @param array $keys
      *
-     * @return void
      * @throws JsonException
+     *
+     * @return void
      */
     private function fillKeys($fileName, array $keys): void
     {
         foreach ($this->languages as $language) {
-            if (!is_dir(base_path('lang' . "/$language")) && !mkdir(base_path('lang' . "/$language"), 0777, true)
-                && !is_dir(base_path('lang' . "/$language"))) {
-                    throw new RuntimeException(sprintf('Directory "%s" was not created', 'path/to/directory'));
-                }
+            if (!is_dir(base_path('lang'."/$language")) && !mkdir(base_path('lang'."/$language"), 0777, true)
+                && !is_dir(base_path('lang'."/$language"))) {
+                throw new RuntimeException(sprintf('Directory "%s" was not created', 'path/to/directory'));
+            }
             $filePath = base_path('lang'."/$language/$fileName.php");
 
             if (!$this->isNew) {
@@ -413,7 +418,7 @@ class LangService extends Command
     /**
      * Generate a string line for an array translation file.
      *
-     * @param $array
+     * @param        $array
      * @param string $prepend
      *
      * @return string
