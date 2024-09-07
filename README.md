@@ -31,15 +31,15 @@ It will create configuration file in `app/config` with name `lang-generator`
 
 ### About configuration
 
-<b>file_type</b>: is responsible for the type of the generated file. It is possible to generate both a json and an php array files. Posible values: `array` , `json`
+<b>file_type</b>: is responsible for the type of the generated file. It is possible to generate both a json and a php array files. Possible values: `array` , `json`
 
 ---
 
-<b>file_name</b>: is responsible for the name of the generated files. By default it is `lang`.
+<b>file_name</b>: is responsible for the name of the generated files. By default, it is `lang`.
 
 ---
 
-<b>languages</b>:  is responsible for the generated languages and accepts an array. Language folders with the specified data will be created. By default it just `en`.
+<b>languages</b>:  is responsible for the generated languages and accepts an array. Language folders with the specified data will be created. By default, it just `en`.
 
 ---
 
@@ -54,7 +54,7 @@ Existing keys will not be removed, only new ones will be added.
 php artisan lang:generate
 ```
 it will create new language files with found translation keys.
-By default name of lang file is `lang`
+By default, name of lang file is `lang`
 
 ![title](https://i.imgur.com/hvDrlVO.jpeg)
 
@@ -68,13 +68,13 @@ php artisan lang:generate --type= --name= --langs= --sync --clear --append --pat
 
 `--type=` or `-T`:
 
-is responsible for the type of the generated file. It is possible to generate both a json and an php array files. Posible values: `array` , `json`. <br>Example: `php artisan lang:generate --type=json`
+is responsible for the type of the generated file. It is possible to generate both a json and a php array files. Possible values: `array` , `json`. <br>Example: `php artisan lang:generate --type=json`
 
 ---
 
 `--name=` or `-N`:
 
-is responsible for the name of the generated files. By default it is `lang`. 
+is responsible for the name of the generated files. By default, it is `lang`. 
 
 Example: `php artisan lang:generate --name="pagination"`
 
@@ -82,7 +82,7 @@ Example: `php artisan lang:generate --name="pagination"`
 
 `--langs=` or `-L`:
 
-is responsible for the generated languages and accepts an array. Language folders with the specified data will be created. By default it just `en`. <br>Example: `php artisan lang:generate --langs="en" --langs="es"`
+is responsible for the generated languages and accepts an array. Language folders with the specified data will be created. By default, it just `en`. <br>Example: `php artisan lang:generate --langs="en" --langs="es"`
 
 ---
 
@@ -104,7 +104,7 @@ Example: `php artisan lang:generate --clear`
 
 `--append` or `-A`:
 
-If you specify this flag, new translations found will be added at the end of the JSON file, which might be useful for automatisation or version control. Only usable with JSON as type.
+If you specify this flag, new translations found will be added at the end of the JSON file, which might be useful for automation or version control. Only usable with JSON as type.
 
 Example: `php artisan lang:generate --type=json --append`
 
