@@ -4,14 +4,13 @@ namespace Glebsky\LaravelLangGenerator\Commands;
 
 use Glebsky\LaravelLangGenerator\LangService;
 use Illuminate\Console\Command;
+use JsonException;
 
 class LangGeneratorCommand extends Command
 {
     protected $signature = 'lang:generate {--T|type=} {--N|name=} {--L|langs=*} {--S|sync} {--C|clear} {--P|path=} {--A|append}';
-
     protected $description = 'Searches for multilingual phrases in Laravel project and automatically generates language files for you.';
-
-    protected $manager;
+    protected LangService $manager;
 
     public function __construct(LangService $manager)
     {
@@ -23,7 +22,10 @@ class LangGeneratorCommand extends Command
         $this->manager->languages = config('lang-generator.languages');
     }
 
-    public function handle()
+    /**
+     * @throws JsonException
+     */
+    public function handle(): void
     {
         $this->manager->output = $this->output;
 
@@ -37,7 +39,7 @@ class LangGeneratorCommand extends Command
         $this->manager->languages = $this->option('langs') ?: $this->manager->languages;
         $this->manager->path = $this->option('path');
 
-        if ($this->manager->doAppend === true && $this->manager->fileType !== 'json') {
+        if ($this->manager->doAppend && $this->manager->fileType !== 'json') {
             $this->error('The append option is only possible for type json.');
 
             return;
