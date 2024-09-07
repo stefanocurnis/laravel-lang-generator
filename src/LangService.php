@@ -20,7 +20,7 @@ class LangService extends Command
     public int $customKeysCount = 0;
 
     public string|null $path;
-    public array $files            = [];
+    public array $files = [];
     public array $translationsKeys = [];
 
     public string $fileType = 'array';
