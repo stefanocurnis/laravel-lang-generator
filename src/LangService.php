@@ -19,7 +19,7 @@ class LangService extends Command
     public int $customFilesCount = 0;
     public int $customKeysCount  = 0;
 
-    public string $path;
+    public string|null $path;
     public array $files            = [];
     public array $translationsKeys = [];
 
@@ -163,7 +163,7 @@ class LangService extends Command
     {
         $fileData = file_get_contents($path);
 
-        $re = '/@lang\(\'(.+?)\'(?:,\s{0,16}\[.{1,256}\]){0,1}\)|trans\(\'(.+?)\'(?:,\s{0,16}\[.{1,256}\]){0,1}\)|__\(\'(.+?)\'(?:,\s{0,16}\[.{1,256}\]){0,1}\)/m';
+        $re = '/(?:@lang|trans|__)\(\'([^\']*)\'(?:,\s*\[.*?])?\)/m';
         preg_match_all($re, $fileData, $matches, PREG_SET_ORDER);
 
         $data = [];
