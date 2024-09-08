@@ -8,24 +8,24 @@ use RuntimeException;
 
 class LangService extends Command
 {
-    public bool $isSync = false;
-    public bool $isNew = false;
-    public bool $doAppend = false;
+    public $isSync = false;
+    public $isNew = false;
+    public $doAppend = false;
 
-    public int $viewsFilesCount = 0;
-    public int $viewsKeysCount = 0;
-    public int $appFilesCount = 0;
-    public int $appKeysCount = 0;
-    public int $customFilesCount = 0;
-    public int $customKeysCount = 0;
+    public $viewsFilesCount = 0;
+    public $viewsKeysCount = 0;
+    public $appFilesCount = 0;
+    public $appKeysCount = 0;
+    public $customFilesCount = 0;
+    public $customKeysCount = 0;
 
-    public string|null $path;
-    public array $files = [];
-    public array $translationsKeys = [];
+    public $path;
+    public $files = [];
+    public $translationsKeys = [];
 
-    public string $fileType = 'array';
-    public string $fileName = 'lang';
-    public array  $languages = ['en'];
+    public $fileType = 'array';
+    public $fileName = 'lang';
+    public $languages = ['en'];
 
     public $output;
 
@@ -169,13 +169,13 @@ class LangService extends Command
 
         $data = [];
         foreach ($matches as $match) {
-            if (isset($match[3]) && !is_null($match[3])) {
+            if (isset($match[3])) {
                 $key = str_replace("'", '', $match[3]);
                 $data[$key] = '';
-            } elseif (isset($match[2]) && !is_null($match[2])) {
+            } elseif (isset($match[2])) {
                 $key = str_replace("'", '', $match[2]);
                 $data[$key] = '';
-            } elseif (isset($match[1]) && !is_null($match[1])) {
+            } elseif (isset($match[1])) {
                 $key = str_replace("'", '', $match[1]);
                 $data[$key] = '';
             }
@@ -209,14 +209,14 @@ class LangService extends Command
         if ($this->fileType === 'json') {
             foreach ($this->languages as $language) {
                 if (!$this->isNew) {
-                    $dataArr = $this->updateValues(base_path('lang/'.$language.'.json'), $dataArr);
+                    $dataArr = $this->updateValues(resource_path('lang/'.$language.'.json'), $dataArr);
                 }
 
                 if ($this->isSync) {
                     $dataArr = $this->syncValues($this->translationsKeys, $dataArr);
                 }
 
-                file_put_contents(base_path('lang/'.$language.'.json'), json_encode($dataArr, JSON_THROW_ON_ERROR
+                file_put_contents(resource_path('lang/'.$language.'.json'), json_encode($dataArr, JSON_THROW_ON_ERROR
                                                                                               | JSON_PRETTY_PRINT));
             }
         } elseif ($this->fileType === 'array') {
@@ -247,7 +247,7 @@ class LangService extends Command
      *
      * @return array|mixed
      */
-    private function updateValues(string $path, array $dataArr): mixed
+    private function updateValues(string $path, array $dataArr)
     {
         if ($this->fileType === 'json') {
             if (is_file($path)) {
@@ -370,11 +370,11 @@ class LangService extends Command
     private function fillKeys($fileName, array $keys): void
     {
         foreach ($this->languages as $language) {
-            if (!is_dir(base_path('lang'."/$language")) && !mkdir(base_path('lang'."/$language"), 0777, true)
-                && !is_dir(base_path('lang'."/$language"))) {
-                throw new RuntimeException(sprintf('Directory "%s" was not created', 'path/to/directory'));
+            if (!is_dir(resource_path('lang'."/$language")) && !mkdir(resource_path('lang'."/$language"), 0777, true)
+                && !is_dir(resource_path('lang'."/$language"))) {
+                throw new RuntimeException(sprintf('Directory "%s" was not created', resource_path('lang'."/$language")));
             }
-            $filePath = base_path('lang'."/$language/$fileName.php");
+            $filePath = resource_path('lang'."/$language/$fileName.php");
 
             if (!$this->isNew) {
                 $keys = $this->updateValues($filePath, $keys);
