@@ -13,19 +13,19 @@ class LangService extends Command
     public $doAppend = false;
 
     public $viewsFilesCount = 0;
-    public  $viewsKeysCount = 0;
-    public  $appFilesCount = 0;
-    public  $appKeysCount = 0;
-    public  $customFilesCount = 0;
-    public  $customKeysCount = 0;
+    public $viewsKeysCount = 0;
+    public $appFilesCount = 0;
+    public $appKeysCount = 0;
+    public $customFilesCount = 0;
+    public $customKeysCount = 0;
 
-    public  $path;
-    public  $files = [];
-    public  $translationsKeys = [];
+    public $path;
+    public $files = [];
+    public $translationsKeys = [];
 
-    public  $fileType = 'array';
-    public  $fileName = 'lang';
-    public   $languages = ['en'];
+    public $fileType = 'array';
+    public $fileName = 'lang';
+    public $languages = ['en'];
 
     public $output;
 
