@@ -3,9 +3,9 @@
 namespace Glebsky\LaravelLangGenerator;
 
 use Glebsky\LaravelLangGenerator\Commands\LangGeneratorCommand;
-use Illuminate\Support\ServiceProvider as ServiceProviderAlias;
+use Illuminate\Support\ServiceProvider;
 
-class LaravelLangGeneratorServiceProvider extends ServiceProviderAlias
+class LaravelLangGeneratorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

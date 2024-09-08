@@ -10,7 +10,7 @@ class LangGeneratorCommand extends Command
 {
     protected $signature = 'lang:generate {--T|type=} {--N|name=} {--L|langs=*} {--S|sync} {--C|clear} {--P|path=} {--A|append}';
     protected $description = 'Searches for multilingual phrases in Laravel project and automatically generates language files for you.';
-    protected LangService $manager;
+    protected $manager;
 
     public function __construct(LangService $manager)
     {
