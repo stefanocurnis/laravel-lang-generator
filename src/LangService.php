@@ -164,7 +164,7 @@ class LangService extends Command
     {
         $fileData = file_get_contents($path);
 
-        $re = '/(?:@lang|trans|__)\(\'([^\']*)\'(?:,\s*\[.*?])?\)/m';
+        $re = '/(?:@lang|trans|__)\(([\'"])(.*?)\1(?:,\s*\[.*?])?\)/m';
         preg_match_all($re, $fileData, $matches, PREG_SET_ORDER);
 
         $data = [];
